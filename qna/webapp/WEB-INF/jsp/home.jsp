@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>HIST</title>
+<title>Hello</title>
 
 <%@ include file="./commons/_header.jspf" %>
 
