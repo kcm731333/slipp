@@ -8,12 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
-	
 	@RequestMapping("/")
 	public String home() {
-		
-		log.debug("logback success!");
 		return "home";   //view의 이름 home.jsp 
 	}
 }
