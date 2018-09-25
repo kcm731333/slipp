@@ -5,6 +5,8 @@ import java.sql.SQLException;
 
 import javax.annotation.PostConstruct;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -15,11 +17,14 @@ import net.slipp.domain.users.User;
 
 public class UserDao extends JdbcDaoSupport {
  
+	private static final Logger log = LoggerFactory.getLogger(UserDao.class);
+	
 	@PostConstruct  //userDao 클래스 인스턴스 생성되면서 initialize가 초기화작업을 한다.
 	public void initialize() {
 		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
 		populator.addScript(new ClassPathResource("slipp.sql"));
 		DatabasePopulatorUtils.execute(populator, getDataSource());
+		log.info("DB initialized success!");
 	}
 
 	public User findById(String userId) {
